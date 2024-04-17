@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 import { AppService } from './app.service';
 
 @Controller()
@@ -40,6 +40,6 @@ export class AppController {
 
   @Get('/hello')
   sayHello(): string {
-    return 'Welcome to the NestJS API!';
+    return this.appService.sayWelcome();
   }
 }
