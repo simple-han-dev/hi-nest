@@ -1,12 +1,13 @@
 import {
+  Body,
   Controller,
   Delete,
   Get,
   Param,
   Patch,
   Post,
-  Put,
-} from '@nestjs/common';
+  Put
+} from "@nestjs/common";
 
 @Controller('movies')
 export class MoviesController {
@@ -41,10 +42,20 @@ export class MoviesController {
   /*
     @Post methods
     - Post request
+
+    @Body() methods
+    - it is use to pass body data
+    - syntax: @Body() variableName: type
+
+    [sample]
+    @Post()
+    create(@Body() movieData: object) {
+      return movieData;
+    }
   */
   @Post()
-  create() {
-    return 'This will create a movie';
+  create(@Body() movieData: object) {
+    return movieData;
   }
 
   /*
@@ -69,8 +80,11 @@ export class MoviesController {
     }
   */
   @Patch('/:id')
-  patch(@Param('id') movieId: string) {
-    return `This will patch a movie with the id: ${movieId}`;
+  patch(@Param('id') movieId: string, @Body() updateData: object) {
+    return {
+      updateMovieId: movieId,
+      ...updateData,
+    };
   }
 
   /*
