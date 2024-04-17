@@ -6,7 +6,7 @@ import {
   Param,
   Patch,
   Post,
-  Put
+  Put,
 } from "@nestjs/common";
 
 @Controller('movies')
@@ -40,7 +40,7 @@ export class MoviesController {
   }
 
   /*
-    @Post methods
+    @Post() methods
     - Post request
 
     @Body() methods
@@ -59,7 +59,7 @@ export class MoviesController {
   }
 
   /*
-    @Delete methods
+    @Delete() methods
     - Delete request
   */
   @Delete('/:id')
@@ -68,7 +68,7 @@ export class MoviesController {
   }
 
   /*
-    @Patch methods
+    @Patch() methods
     - Update request
     - it is Update (Partial)
 
@@ -88,7 +88,7 @@ export class MoviesController {
   }
 
   /*
-    @Put methods
+    @Put() methods
     - Update request
     - it is Update (All)
   */
