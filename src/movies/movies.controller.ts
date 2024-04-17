@@ -8,7 +8,7 @@ import {
   Post,
   Put,
   Query,
-} from "@nestjs/common";
+} from '@nestjs/common';
 
 @Controller('movies')
 export class MoviesController {
@@ -18,9 +18,9 @@ export class MoviesController {
   }
 
   /*
-     @Query() decorator
-     - it is use to pass query parameters
-     - syntax: @Query('parameterName') variableName: type
+    @Query() decorator
+    - it is use to pass query parameters
+    - syntax: @Query('parameterName') variableName: type
   */
   @Get('search')
   search(@Query('year') searchingYear) {
@@ -28,7 +28,7 @@ export class MoviesController {
   }
 
   /*
-    @Param() methods
+    @Param() decorator
     - it is use to pass params
 
     [sample]
@@ -51,10 +51,10 @@ export class MoviesController {
   }
 
   /*
-    @Post() methods
+    @Post() decorator
     - Post request
 
-    @Body() methods
+    @Body() decorator
     - it is use to pass body data
     - syntax: @Body() variableName: type
 
@@ -70,7 +70,7 @@ export class MoviesController {
   }
 
   /*
-    @Delete() methods
+    @Delete() decorator
     - Delete request
   */
   @Delete('/:id')
@@ -79,7 +79,7 @@ export class MoviesController {
   }
 
   /*
-    @Patch() methods
+    @Patch() decorator
     - Update request
     - it is Update (Partial)
 
@@ -99,7 +99,7 @@ export class MoviesController {
   }
 
   /*
-    @Put() methods
+    @Put() decorator
     - Update request
     - it is Update (All)
   */
@@ -107,5 +107,4 @@ export class MoviesController {
   put(@Param('id') movieId: string) {
     return `This will put a movie with the id: ${movieId}`;
   }
-
 }
