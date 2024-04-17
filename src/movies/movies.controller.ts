@@ -7,6 +7,7 @@ import {
   Patch,
   Post,
   Put,
+  Query,
 } from "@nestjs/common";
 
 @Controller('movies')
@@ -14,6 +15,16 @@ export class MoviesController {
   @Get()
   getAll(): string {
     return 'This will return all movies';
+  }
+
+  /*
+     @Query() decorator
+     - it is use to pass query parameters
+     - syntax: @Query('parameterName') variableName: type
+  */
+  @Get('search')
+  search(@Query('year') searchingYear) {
+    return `We are searching for a movie made after: ${searchingYear}`;
   }
 
   /*
@@ -96,4 +107,5 @@ export class MoviesController {
   put(@Param('id') movieId: string) {
     return `This will put a movie with the id: ${movieId}`;
   }
+
 }
