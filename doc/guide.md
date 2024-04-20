@@ -59,3 +59,21 @@ nest g s name
 | UnauthorizedException        | Occurs when the request is not authenticated.                                                            | It is primarily used when trying to access resources that require authentication. |
 | ForbiddenException           | Occurs when a request is authenticated, but you do not have permission to access the requested resource. |                                                                                   |
 | InternalServerErrorException | Occurs when an unexpected error occurs on the server.                                                    |                                                                                   |
+
+
+## how to validate
+  ### create validation pipe
+  - app.useGlobalPipes(new ValidationPipe());
+    - validationPipe(options)
+    - options properties
+      - transform: true
+      - whitelist: true
+      - forbidNonWhitelisted: true
+      - ...
+  ### create DTO (data transfer object)
+  - create DTO
+  - use class-validator
+  - use class-transformer
+```shell
+npm i class-validator class-transformer
+```
