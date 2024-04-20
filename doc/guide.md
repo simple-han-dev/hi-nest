@@ -1,4 +1,10 @@
-# nest command
+# nestjs guide
+- it is on express or fastify
+  - when you need req, res of express, you can use it
+    - but it is not recommended
+    - because when you switch to fastify, you must be refactoring 
+
+## nest command
 
 - this document is about nest command
 
@@ -120,4 +126,27 @@ import { MoviesModule } from './movies/movies.module';
   providers: [],
 })
 export class AppModule {}
+```
+
+## test
+- nestjs test command
+  - test
+  - test:watch
+  - test:cov
+  - test:debug
+  - test:e2e
+- when you watch this error message, try to fix it
+  - Is RootTestModule a valid NestJS module?
+  - If ${name}Service is a provider, is it part of the current RootTestModule?
+  - If ${name}Service is exported from a separate @Module, is that module imported within
+```typescript
+// Movies.controller.spec.ts
+beforeEach(async () => {
+  const module: TestingModule = await Test.createTestingModule({
+    controllers: [MoviesController],
+    providers: [MoviesService],
+  }).compile();
+
+  controller = module.get<MoviesController>(MoviesController);
+});
 ```
