@@ -77,3 +77,9 @@ nest g s name
 ```shell
 npm i class-validator class-transformer
 ```
+
+  ### extends type
+  - it is used to extend the type
+```shell
+npm i @nestjs/mapped-types
+```
