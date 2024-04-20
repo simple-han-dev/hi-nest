@@ -135,6 +135,8 @@ export class AppModule {}
   - test:cov
   - test:debug
   - test:e2e
+
+### unit test
 - when you watch this error message, try to fix it
   - Is RootTestModule a valid NestJS module?
   - If ${name}Service is a provider, is it part of the current RootTestModule?
@@ -150,3 +152,13 @@ beforeEach(async () => {
   controller = module.get<MoviesController>(MoviesController);
 });
 ```
+
+### e2e test
+- directory
+  - /test/${name}.e2e-spec.ts
+- command
+  - test:e2e
+```shell
+npm run test:e2e
+```
+
