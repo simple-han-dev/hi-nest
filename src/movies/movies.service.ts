@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Movie } from './entities/movie.entity';
 import { CreateMovieDto } from './dto/create-movie.dto';
+import { UpdateMovieDto } from "./dto/update-movie.dto";
 
 const SAMPLE_MOVIE = [
   {
@@ -81,7 +82,7 @@ export class MoviesService {
    * @param id {string}
    * @param updateData {object}
    */
-  update(id: number, updateData) {
+  update(id: number, updateData: UpdateMovieDto) {
     const targetIndex = this.movies.findIndex((_movie) => _movie.id === id);
     if (targetIndex === -1) {
       throw new Error(`Not Found Movie Id :${id}`);
