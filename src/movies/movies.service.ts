@@ -71,7 +71,7 @@ export class MoviesService {
    * @return {boolean}
    */
   deleteOne(id: string): boolean {
-    this.movies.filter((_movie) => _movie.id !== Number(id));
+    this.movies = this.movies.filter((_movie) => _movie.id !== Number(id));
     return true;
   }
 
