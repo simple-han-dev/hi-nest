@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Movie } from './entities/movie.entity';
+import { CreateMovieDto } from './dto/create-movie.dto';
 
 const SAMPLE_MOVIE = [
   {
@@ -33,8 +34,8 @@ export class MoviesService {
    * @param {string} id
    * @return {object} {}
    */
-  getOne(id: string): Movie {
-    const movie = this.movies.find((_movie) => _movie.id === Number(id));
+  getOne(id: number): Movie {
+    const movie = this.movies.find((_movie) => _movie.id === id);
 
     if (!movie) {
       throw new NotFoundException(`Not Found Movie Id :${id}`);
@@ -56,9 +57,9 @@ export class MoviesService {
 
   /**
    * create movie
-   * @param movieData {object}
+   * @param movieData {CreateMovieDto}
    */
-  create(movieData) {
+  create(movieData: CreateMovieDto) {
     this.movies.push({
       id: this.movies.length + 1,
       ...movieData,
@@ -70,8 +71,8 @@ export class MoviesService {
    * @param id {string}
    * @return {boolean}
    */
-  deleteOne(id: string): boolean {
-    this.movies = this.movies.filter((_movie) => _movie.id !== Number(id));
+  deleteOne(id: number): boolean {
+    this.movies = this.movies.filter((_movie) => _movie.id !== id);
     return true;
   }
 
@@ -80,10 +81,8 @@ export class MoviesService {
    * @param id {string}
    * @param updateData {object}
    */
-  update(id: string, updateData) {
-    const targetIndex = this.movies.findIndex(
-      (_movie) => _movie.id === Number(id),
-    );
+  update(id: number, updateData) {
+    const targetIndex = this.movies.findIndex((_movie) => _movie.id === id);
     if (targetIndex === -1) {
       throw new Error(`Not Found Movie Id :${id}`);
     }

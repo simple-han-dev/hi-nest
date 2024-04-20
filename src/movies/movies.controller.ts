@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { Movie } from './entities/movie.entity';
+import { CreateMovieDto } from './dto/create-movie.dto';
 
 @Controller('movies')
 export class MoviesController {
@@ -50,7 +51,7 @@ export class MoviesController {
     }
   */
   @Get('/:id')
-  getOne(@Param('id') movieId: string): Movie {
+  getOne(@Param('id') movieId: number): Movie {
     return this.moviesService.getOne(movieId);
   }
 
@@ -69,7 +70,7 @@ export class MoviesController {
     }
   */
   @Post()
-  create(@Body() movieData: object) {
+  create(@Body() movieData: CreateMovieDto) {
     this.moviesService.create(movieData);
     return movieData;
   }
@@ -79,7 +80,7 @@ export class MoviesController {
     - Delete request
   */
   @Delete('/:id')
-  remove(@Param('id') movieId: string) {
+  remove(@Param('id') movieId: number) {
     return this.moviesService.deleteOne(movieId);
   }
 
@@ -96,7 +97,7 @@ export class MoviesController {
     }
   */
   @Patch('/:id')
-  patch(@Param('id') movieId: string, @Body() updateData: object) {
+  patch(@Param('id') movieId: number, @Body() updateData: object) {
     return this.moviesService.update(movieId, updateData);
   }
 
@@ -106,7 +107,7 @@ export class MoviesController {
     - it is Update (All)
   */
   @Put('/:id')
-  put(@Param('id') movieId: string) {
+  put(@Param('id') movieId: number) {
     return `This will put a movie with the id: ${movieId}`;
   }
 }
