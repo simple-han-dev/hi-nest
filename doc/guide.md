@@ -62,7 +62,7 @@ nest g s name
 
 
 ## how to validate
-  ### create validation pipe
+### create validation pipe
   - app.useGlobalPipes(new ValidationPipe());
     - validationPipe(options)
     - options properties
@@ -70,7 +70,7 @@ nest g s name
       - whitelist: true
       - forbidNonWhitelisted: true
       - ...
-  ### create DTO (data transfer object)
+### create DTO (data transfer object)
   - create DTO
   - use class-validator
   - use class-transformer
@@ -82,4 +82,42 @@ npm i class-validator class-transformer
   - it is used to extend the type
 ```shell
 npm i @nestjs/mapped-types
+```
+
+## create module
+- app.modules is the root module
+- app.modules.controllers has only app
+- app.modules.providers has only app
+- if you want to use other modules, you need to import them
+1. create module
+```shell
+nest g mo ${name}
+```
+2. feature module
+```typescript
+// movies.module.ts
+import { Module } from '@nestjs/common';
+import { MoviesController } from "./movies.controller";
+import { MoviesService } from "./movies.service";
+
+@Module({
+  imports: [],
+  controllers: [MoviesController],
+  providers: [MoviesService],
+})
+export class MoviesModule {}
+i
+```
+3. import module
+```typescript
+// app.module.ts
+import { Module } from '@nestjs/common';
+import { MoviesModule } from './movies/movies.module';
+
+@Module({
+  imports: [MoviesModule],
+  controllers: [],
+  providers: [],
+})
+export class AppModule {}
 ```
